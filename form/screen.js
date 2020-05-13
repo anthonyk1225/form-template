@@ -23,7 +23,9 @@ export default class FormScreen extends Component {
       else item.forEach((block) => this.setInputState(block));
     });
 
-    if (values) {
+    const valuesIsEmpty = Object.keys(values).length === 0 && values.constructor === Object;
+
+    if (!valuesIsEmpty) {
       const inputRefs = Object.keys(values);
       const inputValues = Object.values(values);
 
@@ -156,8 +158,7 @@ export default class FormScreen extends Component {
         } : null}
         secureTextEntry={item.validationKey === 'password'}
         value={inputValue}
-        /* eslint-disable react/jsx-props-no-spreading */
-        {...item}
+        {...item.styles}
       />
     );
   }

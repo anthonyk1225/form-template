@@ -15,6 +15,7 @@ export default {
       ref: forgotPasswordConstants.email.ref,
       textContentType: 'emailAddress',
       validationKey: 'email',
+      styles: {},
     },
   ],
   changePassword: [
@@ -24,6 +25,7 @@ export default {
       ref: changePasswordConstants.password.ref,
       textContentType: 'password',
       validationKey: 'password',
+      styles: {},
     },
   ],
   login: [
@@ -34,6 +36,7 @@ export default {
       ref: loginConstants.email.ref,
       textContentType: 'emailAddress',
       validationKey: 'email',
+      styles: {},
     },
     {
       nextRef: '',
@@ -41,6 +44,7 @@ export default {
       ref: loginConstants.password.ref,
       textContentType: 'password',
       validationKey: 'password',
+      styles: {},
     },
   ],
 };
