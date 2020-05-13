@@ -9,3 +9,4 @@ $ npm i --save react-native-elements
 $ npm i --save prop-types
 ```
 
+Delete the `README` and `example` folder.
