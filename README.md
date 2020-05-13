@@ -10,3 +10,7 @@ $ npm i --save prop-types
 ```
 
 Delete the `README` and `example` folder.
+
+## Support
+
+Currently only supports `react-native`. Extending to `react` in the future.
