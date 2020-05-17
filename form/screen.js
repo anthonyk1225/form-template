@@ -158,7 +158,7 @@ export default class FormScreen extends Component {
         } : null}
         secureTextEntry={item.validationKey === 'password'}
         value={inputValue}
-        {...item.styles}
+        {...item.props}
       />
     );
   }
