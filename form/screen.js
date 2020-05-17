@@ -123,20 +123,20 @@ export default class FormScreen extends Component {
     const validInputValue = inputValue && inputValue.length;
     return (
       <Input
+        containerStyle={[{ marginBottom: 10, ...(item.containerStyle || {}) }]}
+        errorMessage={errorMessage}
+        errorStyle={[{ color: red, ...(item.errorStyle || {}) }]}
+        id={item.ref}
         inputComponent={item.inputComponent
           ? () => item.inputComponent((value) => {
             if (this.checkInputValidity(item)) this.saveInputValueToState(value, item);
           },
           inputValue)
           : undefined}
-        containerStyle={[{ marginBottom: 10, ...(item.containerStyle || {}) }]}
-        errorMessage={errorMessage}
-        errorStyle={[{ color: red, ...(item.errorStyle || {}) }]}
-        id={item.ref}
-        inputStyle={[{ ...styles.inputStyle, ...(item.inputStyle || {}) }]}
         inputContainerStyle={[{
           marginLeft: 0, paddingLeft: 0, ...(item.inputContainerStyle || {}),
         }]}
+        inputStyle={[{ ...styles.inputStyle, ...(item.inputStyle || {}) }]}
         key={`${item.ref}-input-form`}
         label={item.label || null}
         labelStyle={[item.labelStyle || { color: black }]}
@@ -147,7 +147,7 @@ export default class FormScreen extends Component {
         onBlur={() => this.checkInputValidity(item)}
         onChangeText={(value) => this.saveInputValueToState(value, item)}
         onSubmitEditing={() => this.focusNextField(item.nextRef)}
-        placeholder={item.placeholder}
+        placeholder={item.placeholder ? item.placeholder : ''}
         ref={(el) => { this[item.ref] = el; }}
         rightIcon={!item.disableIcon && validInputValue ? {
           color: blue,
@@ -157,6 +157,7 @@ export default class FormScreen extends Component {
           type: 'font-awesome',
         } : null}
         secureTextEntry={item.validationKey === 'password'}
+        textContentType={item.textContentType}
         value={inputValue}
         {...item.props}
       />
@@ -173,7 +174,7 @@ export default class FormScreen extends Component {
         {inputs.map((item) => {
           if (!Array.isArray(item)) return this.renderInputElement(item);
           return (
-            <View key={`${item.placeholder}-input-form-container`} style={rowCenterCenter}>
+            <View key={`${item.ref}-input-form-container`} style={rowCenterCenter}>
               {item.map((children) => this.renderInputElement(children))}
             </View>
           );
